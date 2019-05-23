@@ -1,10 +1,15 @@
 var path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: './src/js/app.js',
+    mode: 'development',
+    entry: {
+        mainFile: './src/js/app.js',
+        subFile: './src/js/random-generator.js'
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: '/dist'
     },
     module: {
@@ -31,5 +36,19 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        /**
+         * All files inside webpack's output.path directory will be removed once, but the
+         * directory itself will not be. If using webpack 4+'s default configuration,
+         * everything under <PROJECT_DIR>/dist/ will be removed.
+         * Use cleanOnceBeforeBuildPatterns to override this behavior.
+         *
+         * During rebuilds, all webpack assets that are not used anymore
+         * will be removed automatically.
+         *
+         * See `Options and Defaults` for for information
+         */
+        new CleanWebpackPlugin()
+    ]
 }
