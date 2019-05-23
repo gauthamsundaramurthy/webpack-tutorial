@@ -4,8 +4,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     mode: 'development',
     entry: {
-        mainFile: './src/js/app.js',
-        subFile: './src/js/random-generator.js'
+        file1: './src/js/file1.js',
+        file2: './src/js/file2.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -50,5 +50,11 @@ module.exports = {
          * See `Options and Defaults` for for information
          */
         new CleanWebpackPlugin()
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+        // for more, visit https://webpack.js.org/plugins/split-chunks-plugin/
+    }
 }

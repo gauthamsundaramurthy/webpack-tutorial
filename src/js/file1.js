@@ -1,5 +1,6 @@
 import '../css/main.scss';
 import { RandomGenerator } from './random-generator';
+import _ from 'lodash';
 
 const outputParagraph = document.querySelector('#outputParagraph');
 
@@ -16,3 +17,7 @@ const buttonRndRange = document.querySelector('#randomRange');
 
 buttonRndInt.addEventListener('click', outputRandomInt);
 buttonRndRange.addEventListener('click', outputRandomRange);
+
+console.log(
+  _.join(['From', 'first', 'module'], ' ')
+);
