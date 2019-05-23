@@ -1,15 +1,15 @@
 var path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
     entry: {
-        mainFile: './src/js/app.js',
-        subFile: './src/js/random-generator.js'
+        index: './src/js/app.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js',
+        filename: 'bundle.js',
         publicPath: '/dist'
     },
     module: {
@@ -49,6 +49,6 @@ module.exports = {
          *
          * See `Options and Defaults` for for information
          */
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
     ]
 }
