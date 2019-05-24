@@ -9,6 +9,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        chunkFilename: '[name].bundle.js', //determines the name of non-entry chunk files. 
         publicPath: '/dist'
     },
     module: {
@@ -20,11 +21,11 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: ['@babel/preset-env'],
+                        plugins: ["@babel/plugin-syntax-dynamic-import"]
                     }
                 }
             },
-            
             /* process scss files */
             {
                 test: /\.scss$/,
