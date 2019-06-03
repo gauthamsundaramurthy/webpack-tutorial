@@ -1,5 +1,6 @@
 var path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack')
 
 module.exports = {
     mode: 'development',
@@ -10,7 +11,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         publicPath: '/dist'
-    },
+    },    
     module: {
         rules: [
             /* process js files */
@@ -36,6 +37,11 @@ module.exports = {
             }
         ]
     },
+    devtool: 'inline-source-map',
+    devServer: {
+      publicPath: '/dist',
+      hot: true
+    },
     plugins: [
         /**
          * All files inside webpack's output.path directory will be removed once, but the
@@ -48,6 +54,8 @@ module.exports = {
          *
          * See `Options and Defaults` for for information
          */
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(),     
+        new webpack.HotModuleReplacementPlugin()
+
     ]
 }
