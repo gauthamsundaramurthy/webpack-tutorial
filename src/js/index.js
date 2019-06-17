@@ -6,11 +6,6 @@
 import "@babel/polyfill";
 
 async function getComponent() {
-    // const { default: _ } = await import(/* webpackChunkName: "lodash" */ 'lodash');
-    // const element = document.createElement('div');
-    // element.innerHTML = _.join(['Demo of ','Dynamic Import !!!'], ' ');
-    // return element;
-
    const element = document.createElement('div');
    const { default: _ } = await import(/* webpackChunkName: "lodash" */ 'lodash');
 

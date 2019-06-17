@@ -1,5 +1,6 @@
 var path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: 'development',
@@ -49,6 +50,8 @@ module.exports = {
          *
          * See `Options and Defaults` for for information
          */
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(),    
+        new BundleAnalyzerPlugin()
+
     ]
 }
